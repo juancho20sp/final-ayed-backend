@@ -26,6 +26,18 @@ python --version
 git clone https://github.com/juancho20sp/final-ayed-backend.git
 
 ```
+### Using the Virtual Environment
+Activate:
+- Go to venv/Scripts/
+- Type "activate"
+
+Deactivate:
+- Go to venv/Scripts/
+- Type "deactivate"
+
+Install requirements:
+- With the **venv** activated: pip install -r requirements.txt
+
 ### How to implement it
 - 
 ## Functions
