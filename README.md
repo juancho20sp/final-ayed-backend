@@ -27,16 +27,24 @@ git clone https://github.com/juancho20sp/final-ayed-backend.git
 
 ```
 ### Using the Virtual Environment
-Activate:
-- Go to venv/Scripts/
-- Type "activate"
+**Activate**:
+``` python
+cd venv/Scripts
+activate
+```
 
 Deactivate:
-- Go to venv/Scripts/
-- Type "deactivate"
+``` python
+cd venv/Scripts
+deactivate
+```
 
 Install requirements:
-- With the **venv** activated: pip install -r requirements.txt
+- With the **venv** activated: 
+
+``` python
+pip install -r requirements.txt
+```
 
 ### How to implement it
 - 
