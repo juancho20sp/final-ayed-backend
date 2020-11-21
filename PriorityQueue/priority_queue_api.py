@@ -12,6 +12,7 @@ p_queue_args.add_argument("times_spoken", type=str, help="The number of times th
 
 temp_priority_queue = []
 
+
 class PriorityQueueApi(Resource):
     def __init__(self):
         # Instancia de la clase 'PriorityQueue'
@@ -58,7 +59,7 @@ class PriorityQueueApi(Resource):
     def put(self):
         '''
         Función encargada de recibir los datos del Frontend.
-        :return:
+        :return: Un JSON con la respuesta obtenida de procesar los datos.
         '''
         # Verificamos que cumpla con los datos que necesitamos
         args = p_queue_args.parse_args()

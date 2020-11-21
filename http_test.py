@@ -24,18 +24,13 @@ response = requests.put(BASE + "priority_queue", {
 })
 print(response.json())
 '''
-response = requests.put(BASE + "graph", {
-    "start": 0,
-    "goal": 4,
-    "edges": "0-1,0-2,0-3,3-4"
-})
 
-print(response.json())
-
-response = requests.put(BASE + "priority_queue", {
-    "names": "Melissa",
-    "popularity": "90",
-    "times_spoken": "15"
+'''
+Para conjuntos disjuntos
+'''
+response = requests.put(BASE + "sets", {
+    "final_node": 9,
+    "edges": "0-1,0-2,1-2,4-5,4-6,5-6,7-8,7-9,8-9"
 })
 
 print(response.json())
