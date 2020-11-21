@@ -22,6 +22,3 @@ api.add_resource(PriorityQueueApi, "/priority_queue")
 
 # Generamos el endpoint para la funcionalidad de cola de prioridad
 api.add_resource(DisjointSetsApi, "/sets")
-
-if __name__ == '__main__':
-    app.run()
