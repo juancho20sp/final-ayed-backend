@@ -4,7 +4,7 @@ sys.path.append(".")
 from Graph.graph import Graph
 from PriorityQueue.priority_queue import PriorityQueue
 
-from disjoint_sets import DisjointSets
+from DisjointSets.disjoint_sets import DisjointSets
 
 class TestStringMethods(unittest.TestCase):
     def test_find_love(self):
