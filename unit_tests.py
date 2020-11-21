@@ -33,6 +33,6 @@ class TestStringMethods(unittest.TestCase):
             g.add_edge(arc[0], arc[1])
         self.assertEqual(g.find_love(start, goal), (2, ['2', '4']))
 
-         
+
 if __name__ == '__main__':
     unittest.main()
