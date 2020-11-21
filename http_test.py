@@ -7,7 +7,7 @@ BASE = "http://127.0.0.1:5000/"
 '''
 Para grafos
 
-response = requests.put(BASE + "priority_queue", {
+response = requests.put(BASE + "graph", {
     "start": 0,
     "goal": 4,
     "edges": "0-1,0-2,0-3,3-4"
@@ -17,23 +17,25 @@ response = requests.put(BASE + "priority_queue", {
 '''
 Para colas de prioridad
 
-
+response = requests.put(BASE + "priority_queue", {
+    "names": "Melissa,Juan,Ernesto,Andres,Javier,Vanessa,Mariana,Pedro,Luz",
+    "popularity": "90,87,10,24,37,65,70,14,93",
+    "times_spoken": "15,30,5,1,55,19,25,173,47"
+})
 print(response.json())
 '''
-
 response = requests.put(BASE + "graph", {
     "start": 0,
     "goal": 4,
     "edges": "0-1,0-2,0-3,3-4"
 })
+
 print(response.json())
 
-input()
-
 response = requests.put(BASE + "priority_queue", {
-    "names": "Melissa,Juan,Ernesto,Andres,Javier,Vanessa,Mariana,Pedro,Luz",
-    "popularity": "90,87,10,24,37,65,70,14,93",
-    "times_spoken": "15,30,5,1,55,19,25,173,47"
+    "names": "Melissa",
+    "popularity": "90",
+    "times_spoken": "15"
 })
 
 print(response.json())

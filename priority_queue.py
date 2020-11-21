@@ -2,9 +2,6 @@ import math
 
 
 class PriorityQueue:
-    def test(self):
-        print("Priority Queue working!")
-
     def __init__(self, A, property_check=0):
         self.heap = Heap(A, property_check)
 
@@ -16,15 +13,23 @@ class PriorityQueue:
         self.heap.delete(element)
         return element
 
+    def get_top(self):
+        # Variable que tendrá el top 5 de personas importantes
+        names = []
+
+        for i in range(5):
+            if len(self) > 0:
+                temp = self.pop()
+                names.append(temp)
+
+        return names
+
     def __len__(self):
         return len(self.heap)
 
 
 class Heap:
     def __init__(self, A, property_check = 0):
-
-        print("Heap working!")
-
         self.property_check = property_check
         self.elements = []
         for e in A:

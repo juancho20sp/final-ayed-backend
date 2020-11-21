@@ -2,9 +2,14 @@ import unittest
 import sys
 sys.path.append(".")
 from graph import Graph
+from priority_queue import PriorityQueue
 
 class TestStringMethods(unittest.TestCase):
     def test_find_love(self):
+        '''
+        Función encargada de probar la función find love.
+        :return:
+        '''
         # Primer test
         start, goal = 0, 4
         arcs = [(0, 1), (0, 2), (0, 3), (3, 4)]
@@ -33,6 +38,25 @@ class TestStringMethods(unittest.TestCase):
             g.add_edge(arc[0], arc[1])
         self.assertEqual(g.find_love(start, goal), (2, ['2', '4']))
 
+    def test_priority_queue(self):
+        '''
+        Función encargada de probar la cola de prioridad
+        :return:
+        '''
+        # Primer test
+        data = [['Melissa', 1350], ['Juan', 2610], ['Ernesto', 50], ['Andres', 24], ['Javier', 2035], ['Vanessa', 1235], ['Mariana', 1750], ['Pedro', 2422], ['Luz', 4371]]
+        pq = PriorityQueue(data, 1)
+        self.assertEqual(pq.get_top(), [['Luz', 4371], ['Juan', 2610], ['Pedro', 2422], ['Javier', 2035], ['Mariana', 1750]])
+
+        # Segundo test
+        data = [['Juan', 150], ['Luis', 104], ['Maria', 11]]
+        pq = PriorityQueue(data, 1)
+        self.assertEqual(pq.get_top(), [['Juan', 150], ['Luis', 104], ['Maria', 11]])
+
+        # Tercer test
+        data = [['Juan', 150]]
+        pq = PriorityQueue(data, 1)
+        self.assertEqual(pq.get_top(), [['Juan', 150]])
 
 if __name__ == '__main__':
     unittest.main()
