@@ -17,7 +17,7 @@ graph_put_args.add_argument("start", type=int, help="Start node is required", re
 graph_put_args.add_argument("goal", type=int, help="Goal node is required", required=True)
 graph_put_args.add_argument("edges", type=str, help="Edges are required", required=True)
 
-
+temp = []
 class GraphApi(Resource):
     def __init__(self):
         # Arcos
@@ -36,10 +36,11 @@ class GraphApi(Resource):
         self.data = None
 
     def get(self):
+        print("Self.arcs: {}".format(self.arcs))
         # Verificamos que los arcos no estén vacíos
         self.are_arcs_empty()
 
-        return {"data": self.data or "GraphAPI Working..."}
+        return {"data": temp or "GraphAPI Working..."}
 
     def put(self):
         # Verificamos que cumpla con los datos que necesitamos
@@ -55,18 +56,24 @@ class GraphApi(Resource):
         # Separamos cada pareja
         edges = [tuple(map(int, edge.split('-'))) for edge in edges]
 
-        # Guardamos los arcos en la variable global
+        # Guardamos los arcos en su variable respectiva
         self.arcs = edges
 
-        print(self.arcs)
+        # Modificamos la variable global
+        for el in self.arcs:
+            temp.append(el)
 
         # Iniciamos el grafo
         self.start_graph()
 
-        return args, 201
+        return self.data, 201
+
+    def delete(self):
+        temp.clear()
+        return {"message": "Arcos borrados satisfactoriamente"}
 
     def are_arcs_empty(self):
-        if len(self.arcs) == 0:
+        if len(temp) == 0:
             abort(404, message="No se puede consultar un grafo sin nodos")
 
     def start_graph(self):
@@ -77,7 +84,7 @@ class GraphApi(Resource):
             self.g.add_edge(pair[0], pair[1])
 
         # Buscamos la cantidad de personas necesarias para llegar de 'start' a 'goal'
-        self.g.find_love(self.start, self.goal)
+        self.data = self.g.find_love(self.start, self.goal)
 
 
 

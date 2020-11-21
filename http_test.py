@@ -17,6 +17,22 @@ response = requests.put(BASE + "graph", {
 })
 print(response.json())
 
+input()
+
+response = requests.get(BASE + "graph")
+print(response.json())
+
+input()
+
+response = requests.delete(BASE + "graph")
+print(response.json())
+
+input()
+
+response = requests.get(BASE + "graph")
+print(response.json())
+
+
 #response = requests.put(BASE + "video/1",  {"likes": 10, "name": "Juan", "views": 150})
 #print(response.json())
 
