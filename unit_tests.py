@@ -1,8 +1,8 @@
 import unittest
 import sys
 sys.path.append(".")
-from graph import Graph
-from priority_queue import PriorityQueue
+from Graph.graph import Graph
+from PriorityQueue.priority_queue import PriorityQueue
 
 class TestStringMethods(unittest.TestCase):
     def test_find_love(self):
