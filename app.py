@@ -15,6 +15,9 @@ app = Flask(__name__)
 CORS(app)
 api = Api(app)
 
+@app.route("/")
+def hello_world():
+    return "Hello world"
 
 # Generamos el endpoint para la funcionalidad de grafos
 api.add_resource(GraphApi, "/graph")
