@@ -117,11 +117,11 @@ class GraphApi(Resource):
         una petición GET al endpoint '/graph'.
         :return: Un JSON con los arcos del grafo.
         '''
-        print("Self.arcs: {}".format(self.arcs))
+        #print("Self.arcs: {}".format(self.arcs))
         # Verificamos que los arcos no estén vacíos
-        self.are_arcs_empty()
+        #self.are_arcs_empty()
 
-        return {"data": temp_graph}
+        return {"data": "Graph API working..."}
 
     def put(self):
         '''

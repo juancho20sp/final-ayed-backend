@@ -91,6 +91,18 @@ class DisjointSetsApi(Resource):
         '''
         self._dj = dj
 
+    def get(self):
+        '''
+        Función que devuelve la lista de arcos del árbol (si la hay) al hacer
+        una petición GET al endpoint '/priority_queue'.
+        :return: Un JSON con los arcos del grafo.
+        '''
+        #print("Self.arcs: {}".format(self.arcs))
+        # Verificamos que los arcos no estén vacíos
+        #self.are_arcs_empty()
+
+        return {"data": "Disjoint Sets API working..."}
+
     def put(self):
         '''
         Función encargada de recibir los datos del Frontend.

@@ -56,6 +56,18 @@ class PriorityQueueApi(Resource):
         '''
         self._data = data
 
+    def get(self):
+        '''
+        Función que devuelve la lista de arcos del árbol (si la hay) al hacer
+        una petición GET al endpoint '/priority_queue'.
+        :return: Un JSON con los arcos del grafo.
+        '''
+        #print("Self.arcs: {}".format(self.arcs))
+        # Verificamos que los arcos no estén vacíos
+        #self.are_arcs_empty()
+
+        return {"data": "Priority Queue API working..."}
+
     def put(self):
         '''
         Función encargada de recibir los datos del Frontend.
