@@ -1,5 +1,6 @@
 from flask import Flask
 from flask_restful import Api, Resource, reqparse
+from flask_cors import CORS
 
 import sys
 sys.path.append(".")
@@ -11,6 +12,7 @@ from DisjointSets.disjoint_sets_api import DisjointSetsApi
 
 # Creamos la aplicación
 app = Flask(__name__)
+CORS(app)
 api = Api(app)
 
 
