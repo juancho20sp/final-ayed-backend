@@ -36,10 +36,9 @@ class DisjointSets:
     def connected_components(self, Arcs):
         for e in Arcs:
             self.union(e[0], e[1])
-            #print('After processing arc', e, self.sets)
+
         result = []
         for si in self.sets:
-            #if len(si) > 1:
-             result.append(si)
+            result.append(si)
         return result
 

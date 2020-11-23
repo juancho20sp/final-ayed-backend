@@ -1,7 +1,7 @@
 import requests
 
-#BASE = "http://127.0.0.1:5000/"
-BASE = "https://obscure-sierra-80708.herokuapp.com/"
+BASE = "http://127.0.0.1:5000/"
+#BASE = "https://obscure-sierra-80708.herokuapp.com/"
 #response = requests.get(BASE + "helloworld/juan")
 
 '''
@@ -37,7 +37,10 @@ response = requests.put(BASE + "sets", {
 
 print(response.json())
 '''
-response = requests.put(BASE + "graph", {
+
+'''
+Para Djikstra
+response = requests.put(BASE + "djikstra", {
     "start": 0,
     "goal": 4,
     "edges": "0-1,0-2,0-3,3-4"
@@ -45,6 +48,14 @@ response = requests.put(BASE + "graph", {
 
 print(response.json())
 
+'''
+response = requests.put(BASE + "graph", {
+    "start": 0,
+    "goal": 4,
+    "edges": "0-1,0-2,0-3,3-4"
+})
+
+print(response.json())
 
 response = requests.put(BASE + "priority_queue", {
     "names": "Melissa,Juan,Ernesto,Andres,Javier,Vanessa,Mariana,Pedro,Luz",
@@ -59,7 +70,17 @@ response = requests.put(BASE + "sets", {
 })
 
 print(response.json())
-# Put
+
+response = requests.put(BASE + "djikstra", {
+    "start": 0,
+    "goal": 4,
+    "edges": "0-1-16,0-2-2,0-3-1,1-4-1,2-4-0,3-4-3"
+})
+
+print(response.json())
+
+
+
 
 
 

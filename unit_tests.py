@@ -3,8 +3,8 @@ import sys
 sys.path.append(".")
 from Graph.graph import Graph
 from PriorityQueue.priority_queue import PriorityQueue
-
 from DisjointSets.disjoint_sets import DisjointSets
+from Djikstra.djikstra import GraphLD
 
 class TestStringMethods(unittest.TestCase):
     def test_find_love(self):
@@ -85,6 +85,35 @@ class TestStringMethods(unittest.TestCase):
 
         dj = DisjointSets(nodes)
         self.assertEqual(dj.connected_components(arcs), [{0}, {1}])
+
+    def test_djikstra_shortest_path(self):
+        '''
+        Función encargada de probar la funcionalidad de camino mínimo de djikstra
+        :return:
+        '''
+
+        # Primer test
+        vertex = [0, 1, 2, 3, 4]
+        arcs = [[0, 1, 16], [0, 2, 2], [0, 3, 1], [1, 4, 1], [2, 4, 0], [3, 4, 3]]
+
+        dj = GraphLD(vertex, arcs)
+        dj.dijkstra(0)
+        self.assertEqual(dj.find_shortest_path([], 0, 4), ([2, 4], 2))
+
+        # Segundo test
+        vertex = [0, 1, 2, 3, 4]
+        arcs = [[0, 1, 1], [0, 2, 10], [1, 3, 2], [2, 3, 10], [3, 4, 3]]
+        dj = GraphLD(vertex, arcs)
+        dj.dijkstra(0)
+        self.assertEqual(dj.find_shortest_path([], 0, 4), ([1, 3, 4], 1))
+
+        # Segundo test
+        vertex = [0, 1, 2, 3, 4, 5]
+        arcs = [[0, 1, 2], [1, 2, 2], [2, 5, 2], [5, 4, 2], [4, 3, 2]]
+        dj = GraphLD(vertex, arcs)
+        dj.dijkstra(0)
+        self.assertEqual(dj.find_shortest_path([], 0, 3), ([1, 2, 5, 4, 3], 2))
+
 
 if __name__ == '__main__':
     unittest.main()
