@@ -97,9 +97,6 @@ class DisjointSetsApi(Resource):
         una petición GET al endpoint '/priority_queue'.
         :return: Un JSON con los arcos del grafo.
         '''
-        #print("Self.arcs: {}".format(self.arcs))
-        # Verificamos que los arcos no estén vacíos
-        #self.are_arcs_empty()
 
         return {"data": "Disjoint Sets API working..."}
 
@@ -127,14 +124,17 @@ class DisjointSetsApi(Resource):
         return self.data, 201
 
     def clean_data(self, args):
+        '''
+            Esta función le da el formato adecuado a los datos recibidos y los guarda en las variables respectivas.
+            :param args: JSON con los datos recibidos del frontend.
+            :return: None
+        '''
         # Guardamos el total de nodos
         self.final_node = args['final_node']
 
         # Preparamos los arcos
         arcs = args['edges'].split(',')
         self.arcs = [list(map(int, arc.split('-'))) for arc in arcs]
-
-        print(self.arcs)
 
         # Creamos los conjuntos disjuntos y buscamos regiones conexas
         self.create_disjoint_sets()
@@ -146,4 +146,3 @@ class DisjointSetsApi(Resource):
 
         # Buscamos componentes conexas
         self.data = self.dj.connected_components(self.arcs)
-        print(self.data)

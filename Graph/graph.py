@@ -7,13 +7,9 @@ GRAY = 'gray'
 
 
 class Graph:
-    def test(self):
-        print("Test is working!")
-
     def __init__(self, v):
         self.v = v
         self.goal = v
-        #self.e = e
 
         # Definimos los atributos de los vértices
         self.vertices = {}
@@ -41,7 +37,6 @@ class Graph:
         neighbours = []
         for i in range(self.v):
             if self.matrix[i][index] == 1:
-                #print("{} {}".format(i, index))
                 neighbours.append(i)
 
         return neighbours
@@ -146,8 +141,4 @@ class Graph:
 
 
         res = list(map(str, res))
-
-        #print("¡Estás a {} personas de conocer a tu crush!"
-              #" Sigue esta ruta para hacerlo: {}".format(len(res), ' -> '.join(res)))
-
         return len(res), res
