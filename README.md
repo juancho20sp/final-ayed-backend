@@ -2,7 +2,8 @@
 
 ## What is this?
 
-This is a repository for all the files used to create a backend with flask in order to connect our functions with a simple JavaScript web application.
+This is a repository for all the files used to create a backend with flask in order to connect our functions with a simple JavaScript web application. This project was deployed to [Heroku](https://dashboard.heroku.com/) and the URL is: https://obscure-sierra-80708.herokuapp.com/.
+
 
 ## Getting Started
 
@@ -46,77 +47,100 @@ Install requirements:
 pip install -r requirements.txt
 ```
 
-### How to implement it
-- 
-## Functions
-```python
-  from library import *
-  
-  library.add(a, b) # Add two complex numbers: a and b
-  library.substract(a, b) # Substract two complex numbers: a and b
-  library.multiply(a, b) # Multiply two complex numbers: a and b
-  library.divide(a, b) # Divide two complex numbers: a and b
-  library.conjugate(a) # Returns the conjugate of a given complex number
-  library.module(a) # Returns the module of a given complex number
-  library.polar(a) # Returns the given complex number in polar coordinates
-  library.phase(a) # Returns the fase of a given complex
-  
-  library.add_arrays(m1, m2) # Add two multidimensional arrays, in case they have the same dimensions
-  library.inverse_matrix(m1) # Returns a matrix where every item is the inverse of its corresponding in m1
-  library.scalar_product(scalar, m1) # Returns the scalar product between 'scalar' and 'm1'. 'scalar' might be an integer or a complex number.
-  library.transpose(m1) # Returns the given array BUT transposed
-  library.conjugate_mx(m1) # Returns the given array conjugated, in case it has COMPLEX values
-  library.adjoint(m1) # Returns the adjoint of the given array 
-  library.multiply_mx(m1, m2) # Returns the product of (Array M1 x Array M2)
-  library.trace(m1) # Returns the sum of the elements of the diagonal of the matrix
-  library.inner_product(m1, m2) # Returns the inner product of <m1, m2>
-  liibrary.norm(m1) # Returns the norm of the given array
-  library.is_hermitian(m1) # Returns True if the given array is Hermitian, False otherwise
-  library.inner(v1, v2) # Returns the inner product between two vectors
-  library.norm_vector(v1) # Returns the norm of the given vector
-  library.tensor(m1, m2) # Returns the tensor product between m1 and m2
-  library.distance(v1, v2) # Returns the distance between two vectors
-  library.action(m1, v2) # Returns the action between an array and a vector. IMPORTANT! If the array is a complex array (array of tuples), the vector must be written as a vector of complex numbers, even if it is real
-  library.is_unitary(m1) # Returns 'True' if the given 2x2 array is unitary, 'False' otherwise
-  
-  ```
-  
- ### Special Functions
-   ```python
-   library.prettyPrinting(tuple) # Basically prints the complex numbers (saved as tuples) in a *stylish* way: a + bi
-   library.summable(m1, m2) # Checks if both multidimensional arrays have the same dimension
-   library.substract_by_element(v1, v2) # Returns a vector whose each component are the substract V1 - V2 
-   library.det(m1) # Returns the determinant of a 2x2 array
-   ```
-
-
-
-## Let's run the tests!
-- For running the automated tests of the [Complex Calculator](https://github.com/juancho20sp/Complex-Calculator/blob/master/library.py), just open the [testlib.py](https://github.com/juancho20sp/Complex-Calculator/blob/master/Vectors%20and%20Arrays%20Library/testLib.py) file in your favorite editor and run it.
-- For running the automates tests of the [Programming drills](https://github.com/juancho20sp/Complex-Calculator/blob/master/Programming_drills.py), just open the [test_drills.py](https://github.com/juancho20sp/Complex-Calculator/blob/master/test_drills.py) file in your code editor and run it.
-
-### Breaking down the tests
-You will find a variety tests for each function, trying to get over all the possibilities. <br/>
-An example will look like:
-
+## API
+### PUT REQUESTS
+- [/graph](https://obscure-sierra-80708.herokuapp.com/graph) : Here you will find the functionallity based on the BFS algorythm for graphs. The JSON structure of a PUT request to this endpoint should look like this:
+```JSON
+{
+    // Start node for BFS
+    "start": 0,
+    // Goal node for BFS
+    "goal": 4,
+    // List of edges (from-to)
+    "edges": "0-1,0-2,0-3,3-4"
+}
 ```
-  A = [[1, 2, 3], [4, 5, 6]]
-  B = [[1, 2, 3, 4], [5, 6, 7, 8]]
-  C = [1, 2, 3]
-  D = [[(101, 10), (1, 1), (1, 1)], [(2, 2), (2, 2), (2, 2)]]
-
-  self.assertEqual(transpose(A), [[1, 4], [2, 5], [3, 6]])
-  self.assertEqual(transpose(B), [[1, 5], [2, 6], [3, 7], [4, 8]])
-  self.assertEqual(transpose(C), [[1], [2], [3]])
-  self.assertEqual(transpose(D), [[(101, 10), (2, 2)], [(1, 1),(2, 2)], [(1, 1), (2, 2)]])
+- The server response for [/graph](https://obscure-sierra-80708.herokuapp.com/graph)  will be a JSON with this structure:
+```JSON
+{
+    // The distance (node count) between 'start' and 'goal'
+    "distance": 2,
+    // The path from 'start' to 'goal'
+    "nodes": [2, 4]
+}
 ```
+- [/priority_queue](https://obscure-sierra-80708.herokuapp.com/priority_queue): Here you will find the functionallity based on a _priority queue_ and a _binary heap_. The JSON structure of a PUT request to this endpoint should look like this:
+```JSON
+{
+    // The name of each person
+    "names": "Melissa,Juan,Ernesto,Andres,Javier,Vanessa,Mariana,Pedro,Luz",
+    // The popularity of each person
+    "popularity": "90,87,10,24,37,65,70,14,93",
+    // The number of times this person have spoken with our goal.
+    "times_spoken": "15,30,5,1,55,19,25,173,47"
+    
+    // Note that the data is ordered by index, so popularity[0] and times_spoken[0] correspond to names[0]
+}
+``` 
 
+- The server response for  [/priority_queue](https://obscure-sierra-80708.herokuapp.com/priority_queue)  will be a JSON with this structure:
+```JSON
+{
+    // The list of names of the most important people, sorted by 'score'
+   "name": self.data[0][0],
+   // The 'scores' of the persons
+    "score": self.data[0][1]
+    
+    // Note that the data is ordered by index, so score[0] correspond to name[0]
+}
+```
+- [/sets](https://obscure-sierra-80708.herokuapp.com/sets): Here you will find the functionallity based on _disjoint sets_. The JSON structure of a PUT request to this endpoint should look like this:
+```JSON
+{
+    // The range of nodes, i.e: 0 - 9 (inclusive)
+    "final_node": 9,
+    // List of connections between nodes (from-to)
+    "edges": "0-1,0-2,1-2,4-5,4-6,5-6,7-8,7-9,8-9"
+}
+``` 
 
-
+- The server response for [/sets](https://obscure-sierra-80708.herokuapp.com/sets) will be a JSON with this structure:
+```JSON
+{
+    // Number of nodes in the graph
+    "num_nodes": 10,
+    // Last analyzed node
+    "final_node": 9,
+    // List of related regions (each related region is an array)
+    "related_regions": [1, [2,3,4], [5,6,7,8,9]],
+    // Length of 'related_regions' array
+    "num_related_regions": 3
+}
+```
+- [/djikstra](https://obscure-sierra-80708.herokuapp.com/djikstra): Here you will find the functionallity based on the _Djikstra algorythm_. The JSON structure of a PUT request to this endpoint should look like this:
+```JSON
+{
+    // Start node for Djikstra's algorythm
+    "start": 0,
+    // Goal node form Djikstra's algorythm
+    "goal": 4,
+    // List of connections (from-to-cost)
+    "edges": "0-1-16,0-2-2,0-3-1,1-4-1,2-4-0,3-4-3"
+}
+``` 
+- The server response for  [/djikstra](https://obscure-sierra-80708.herokuapp.com/djikstra) will be a JSON with this structure:
+```JSON
+{
+    // Array with the order in which nodes should be visited
+    "route": [1,3,5,6],
+    // Cost of 'route'
+    "cost": 11
+}
+```
 
 ## Built With
 
-* [Python 3.8](https://www.python.org/) - As the main programming language.
+* [Python 3.8](https://www.python.org/) - As the main programming language and *Flask* as microframework.
 
 
 
@@ -134,5 +158,3 @@ Students at: [Escuela Colombiana de Ingeniería Julio Garavito](https://www.escu
 This is an *open source* project.
 
 ### Thanks for checking out!
-
-
