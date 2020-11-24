@@ -61,7 +61,7 @@ pip install -r requirements.txt
 }
 ```
 - The server response for [/graph](https://obscure-sierra-80708.herokuapp.com/graph)  will be a JSON with this structure:
-```JSON
+```javascript
 {
     // The distance (node count) between 'start' and 'goal'
     "distance": 2,
@@ -70,7 +70,7 @@ pip install -r requirements.txt
 }
 ```
 - [/priority_queue](https://obscure-sierra-80708.herokuapp.com/priority_queue): Here you will find the functionallity based on a _priority queue_ and a _binary heap_. The JSON structure of a PUT request to this endpoint should look like this:
-```JSON
+```javascript
 {
     // The name of each person
     "names": "Melissa,Juan,Ernesto,Andres,Javier,Vanessa,Mariana,Pedro,Luz",
@@ -84,7 +84,7 @@ pip install -r requirements.txt
 ``` 
 
 - The server response for  [/priority_queue](https://obscure-sierra-80708.herokuapp.com/priority_queue)  will be a JSON with this structure:
-```JSON
+```javascript
 {
     // The list of names of the most important people, sorted by 'score'
    "name": self.data[0][0],
@@ -95,7 +95,7 @@ pip install -r requirements.txt
 }
 ```
 - [/sets](https://obscure-sierra-80708.herokuapp.com/sets): Here you will find the functionallity based on _disjoint sets_. The JSON structure of a PUT request to this endpoint should look like this:
-```JSON
+```javascript
 {
     // The range of nodes, i.e: 0 - 9 (inclusive)
     "final_node": 9,
@@ -105,7 +105,7 @@ pip install -r requirements.txt
 ``` 
 
 - The server response for [/sets](https://obscure-sierra-80708.herokuapp.com/sets) will be a JSON with this structure:
-```JSON
+```javascript
 {
     // Number of nodes in the graph
     "num_nodes": 10,
@@ -118,7 +118,7 @@ pip install -r requirements.txt
 }
 ```
 - [/djikstra](https://obscure-sierra-80708.herokuapp.com/djikstra): Here you will find the functionallity based on the _Djikstra algorythm_. The JSON structure of a PUT request to this endpoint should look like this:
-```JSON
+```javascript
 {
     // Start node for Djikstra's algorythm
     "start": 0,
@@ -129,7 +129,7 @@ pip install -r requirements.txt
 }
 ``` 
 - The server response for  [/djikstra](https://obscure-sierra-80708.herokuapp.com/djikstra) will be a JSON with this structure:
-```JSON
+```javascript
 {
     // Array with the order in which nodes should be visited
     "route": [1,3,5,6],
