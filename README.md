@@ -54,8 +54,10 @@ pip install -r requirements.txt
 {
     // Start node for BFS
     "start": 0,
+    
     // Goal node for BFS
     "goal": 4,
+    
     // List of edges (from-to)
     "edges": "0-1,0-2,0-3,3-4"
 }
@@ -65,6 +67,7 @@ pip install -r requirements.txt
 {
     // The distance (node count) between 'start' and 'goal'
     "distance": 2,
+    
     // The path from 'start' to 'goal'
     "nodes": [2, 4]
 }
@@ -74,8 +77,10 @@ pip install -r requirements.txt
 {
     // The name of each person
     "names": "Melissa,Juan,Ernesto,Andres,Javier,Vanessa,Mariana,Pedro,Luz",
+    
     // The popularity of each person
     "popularity": "90,87,10,24,37,65,70,14,93",
+    
     // The number of times this person have spoken with our goal.
     "times_spoken": "15,30,5,1,55,19,25,173,47"
     
@@ -88,6 +93,7 @@ pip install -r requirements.txt
 {
     // The list of names of the most important people, sorted by 'score'
    "name": self.data[0][0],
+   
    // The 'scores' of the persons
     "score": self.data[0][1]
     
@@ -99,6 +105,7 @@ pip install -r requirements.txt
 {
     // The range of nodes, i.e: 0 - 9 (inclusive)
     "final_node": 9,
+    
     // List of connections between nodes (from-to)
     "edges": "0-1,0-2,1-2,4-5,4-6,5-6,7-8,7-9,8-9"
 }
@@ -109,10 +116,13 @@ pip install -r requirements.txt
 {
     // Number of nodes in the graph
     "num_nodes": 10,
+    
     // Last analyzed node
     "final_node": 9,
+    
     // List of related regions (each related region is an array)
     "related_regions": [1, [2,3,4], [5,6,7,8,9]],
+    
     // Length of 'related_regions' array
     "num_related_regions": 3
 }
@@ -122,8 +132,10 @@ pip install -r requirements.txt
 {
     // Start node for Djikstra's algorythm
     "start": 0,
+    
     // Goal node form Djikstra's algorythm
     "goal": 4,
+    
     // List of connections (from-to-cost)
     "edges": "0-1-16,0-2-2,0-3-1,1-4-1,2-4-0,3-4-3"
 }
@@ -133,6 +145,7 @@ pip install -r requirements.txt
 {
     // Array with the order in which nodes should be visited
     "route": [1,3,5,6],
+    
     // Cost of 'route'
     "cost": 11
 }
