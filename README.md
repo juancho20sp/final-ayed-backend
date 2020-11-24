@@ -50,7 +50,7 @@ pip install -r requirements.txt
 ## API
 ### PUT REQUESTS
 - [/graph](https://obscure-sierra-80708.herokuapp.com/graph) : Here you will find the functionallity based on the BFS algorythm for graphs. The JSON structure of a PUT request to this endpoint should look like this:
-```JSON
+```javascript
 {
     // Start node for BFS
     "start": 0,
