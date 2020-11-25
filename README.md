@@ -91,7 +91,7 @@ pip install -r requirements.txt
 - The server response for  [/priority_queue](https://obscure-sierra-80708.herokuapp.com/priority_queue)  will be a JSON with this structure:
 ```javascript
 {
-    # An array with the data of the mos important people in the list
+    // An array with the data of the mos important people in the list
     data: [{'name': 'Luz', 'score': 4371}, {'name': 'Juan', 'score': 2610}, {'name': 'Pedro', 'score': 2422}]
 }
 ```
