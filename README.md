@@ -91,13 +91,8 @@ pip install -r requirements.txt
 - The server response for  [/priority_queue](https://obscure-sierra-80708.herokuapp.com/priority_queue)  will be a JSON with this structure:
 ```javascript
 {
-    // The list of names of the most important people, sorted by 'score'
-   "name": self.data[0][0],
-   
-   // The 'scores' of the persons
-    "score": self.data[0][1]
-    
-    // Note that the data is ordered by index, so score[0] correspond to name[0]
+    // An array with the data of the mos important people in the list
+    data: [{'name': 'Luz', 'score': 4371}, {'name': 'Juan', 'score': 2610}, {'name': 'Pedro', 'score': 2422}]
 }
 ```
 - [/sets](https://obscure-sierra-80708.herokuapp.com/sets): Here you will find the functionallity based on _disjoint sets_. The JSON structure of a PUT request to this endpoint should look like this:
