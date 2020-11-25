@@ -80,9 +80,16 @@ class PriorityQueueApi(Resource):
         self.data = self.create_priority_queue(self.data)
 
         # Le damos formato al JSON de respuesta
+        res = []
+        for el in self.data:
+            temp = {
+                "name": el[0],
+                "score": el[1]
+            }
+            res.append(temp)
+
         self.data = {
-            "name": self.data[0][0],
-            "score": self.data[0][1]
+            "data": res
         }
 
         # Devolvemos la lista adecuada y el estado de éxito
