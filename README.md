@@ -98,28 +98,19 @@ pip install -r requirements.txt
 - [/sets](https://obscure-sierra-80708.herokuapp.com/sets): Here you will find the functionallity based on _disjoint sets_. The JSON structure of a PUT request to this endpoint should look like this:
 ```javascript
 {
-    // The range of nodes, i.e: 0 - 9 (inclusive)
-    "final_node": 9,
+    // The list of known nodes
+    "nodes": "0,1,2,3,4,5,6,7,8,9",
     
     // List of connections between nodes (from-to)
-    "edges": "0-1,0-2,1-2,4-5,4-6,5-6,7-8,7-9,8-9"
+    "edges": "0-1,0-2,1-2,4-5,4-6,5-6,7-8,7-9,8-9,11-12,11-13,14-14"
 }
 ``` 
 
 - The server response for [/sets](https://obscure-sierra-80708.herokuapp.com/sets) will be a JSON with this structure:
 ```javascript
-{
-    // Number of nodes in the graph
-    "num_nodes": 10,
-    
-    // Last analyzed node
-    "final_node": 9,
-    
+{    
     // List of related regions (each related region is an array)
-    "related_regions": [1, [2,3,4], [5,6,7,8,9]],
-    
-    // Length of 'related_regions' array
-    "num_related_regions": 3
+    "related_regions": [1, [2,3,4], [5,6,7,8,9]]
 }
 ```
 - [/djikstra](https://obscure-sierra-80708.herokuapp.com/djikstra): Here you will find the functionallity based on the _Djikstra algorythm_. The JSON structure of a PUT request to this endpoint should look like this:
