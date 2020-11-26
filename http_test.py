@@ -73,8 +73,8 @@ print(response.json())
 
 response = requests.put(BASE + "djikstra", {
     "start": 0,
-    "goal": 4,
-    "edges": "0-1-16,0-2-2,0-3-1,1-4-1,2-4-0,3-4-3"
+    "goal": 2,
+    "edges": "0-1-1,1-2-2"
 })
 
 print(response.json())

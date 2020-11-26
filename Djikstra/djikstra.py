@@ -73,7 +73,10 @@ class GraphLD:
         # Añadimos el elemento actual a la lista
         lista.append(goal)
 
-        return self.find_shortest_path(lista, self.V[goal]['distance'], self.V[goal]['phi'])
+        # Dejamos fija la distancia
+        if self.V[goal]['distance'] > distance:
+            distance = self.V[goal]['distance']
+        return self.find_shortest_path(lista, distance, self.V[goal]['phi'])
 
 
     def print_current_state(self, result):
