@@ -1,8 +1,8 @@
 class DisjointSets:
 
-    def __init__(self, A):
-        sets = [x for x in range(A + 1)]
-        self.sets = [set([x]) for x in sets]
+    def __init__(self, lista_nodos):
+        #sets = [x for x in range(A + 1)]
+        self.sets = [set([x]) for x in lista_nodos]
 
     def get_sets(self):
         return self.sets

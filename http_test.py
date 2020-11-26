@@ -65,8 +65,8 @@ response = requests.put(BASE + "priority_queue", {
 print(response.json())
 
 response = requests.put(BASE + "sets", {
-    "final_node": 9,
-    "edges": "0-1,0-2,1-2,4-5,4-6,5-6,7-8,7-9,8-9"
+    "nodes": "0,1,2,3,4,5,6,7,8,9",
+    "edges": "0-1,0-2,1-2,4-5,4-6,5-6,7-8,7-9,8-9,11-12,11-13,14-14"
 })
 
 print(response.json())

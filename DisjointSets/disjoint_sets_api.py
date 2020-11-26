@@ -5,13 +5,13 @@ from DisjointSets.disjoint_sets import DisjointSets
 
 # Configuramos los parámetros necesarios para revisar regiones conexas
 disjoint_args = reqparse.RequestParser()
-disjoint_args.add_argument("final_node", type=int, help="The number of nodes is required", required=True)
+disjoint_args.add_argument("nodes", type=str, help="The list of nodes is required", required=True)
 disjoint_args.add_argument("edges", type=str, help="The list of edges is required", required=True)
 
 class DisjointSetsApi(Resource):
     def __init__(self):
-        # Cantidad de nodos
-        self._final_node = 0
+        # Lista de nodos
+        self._nodes = []
 
         # Lista con los arcos
         self._arcs = []
@@ -24,21 +24,21 @@ class DisjointSetsApi(Resource):
 
     # Setters y getters
     @property
-    def final_node(self):
+    def nodes(self):
         '''
         Getter para la variable "nodes"
         :return: Variable "nodes"
         '''
-        return self._final_node
+        return self._nodes
 
-    @final_node.setter
-    def final_node(self, nodes):
+    @nodes.setter
+    def nodes(self, nodes):
         '''
-        Setter para la variable nodes
-        :param nodes: Cantidad de nodos presentes en el grafo
+        Setter para la variable 'nodes'
+        :param nodes: Lista de nodos presentes en el grafo.
         :return: None
         '''
-        self._final_node = nodes
+        self._nodes = nodes
 
     @property
     def data(self):
@@ -115,10 +115,7 @@ class DisjointSetsApi(Resource):
         self.data = [list(el) for el in self.data]
 
         self.data = {
-            "num_nodes": self.final_node + 1,
-            "final_node": self.final_node,
             "related_regions": self.data,
-            "num_related_regions": len(self.data)
         }
 
         return self.data, 201
@@ -129,12 +126,27 @@ class DisjointSetsApi(Resource):
             :param args: JSON con los datos recibidos del frontend.
             :return: None
         '''
-        # Guardamos el total de nodos
-        self.final_node = args['final_node']
+        # Guardamos la lista de nodos
+        nodes = args['nodes']
+        self.nodes = list(map(int, nodes.split(',')))
+
 
         # Preparamos los arcos
         arcs = args['edges'].split(',')
         self.arcs = [list(map(int, arc.split('-'))) for arc in arcs]
+
+        # Verificamos que los nodos de los arcos estén dentro de la lista de nodos
+        print(self.arcs)
+        temp = []
+        for el in self.arcs:
+            temp.append(el[0])
+            temp.append(el[1])
+
+        temp = list(set(temp))
+        print(temp)
+
+        print(len(temp) > len(self.nodes))
+        print(temp == self.nodes)
 
         # Creamos los conjuntos disjuntos y buscamos regiones conexas
         self.create_disjoint_sets()
@@ -142,7 +154,7 @@ class DisjointSetsApi(Resource):
 
     def create_disjoint_sets(self):
         # Creamos y guardamos la instancia de la clase 'Disjoint Sets'
-        self.dj = DisjointSets(self.final_node)
+        self.dj = DisjointSets(self.nodes)
 
         # Buscamos componentes conexas
         self.data = self.dj.connected_components(self.arcs)
